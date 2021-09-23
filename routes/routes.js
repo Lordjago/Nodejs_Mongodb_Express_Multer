@@ -4,8 +4,9 @@ const router = express.Router()
 
 const { upload } = require('../helper/helper')
 
-const fileUpload = require('../controller/singleFileUpload')
+const {singleFileUpload, multipleFileUpload} = require('../controller/singleFileUpload')
 
-router.post('/upload', upload.single('file'), fileUpload);
+router.post('/upload', upload.single('file'), singleFileUpload);
+router.post('/uploads', upload.array('files'), multipleFileUpload);
 
 module.exports = router
